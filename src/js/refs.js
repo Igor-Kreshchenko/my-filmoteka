@@ -3,4 +3,5 @@ export default {
   searchInputRef: document.querySelector('.search-input'),
   searchBtnRef: document.querySelector('.search-btn'),
   moviesRef: document.querySelector('.movies'),
+  loadMoreBtnRef: document.querySelector('[data-action="load-more"]'),
 };

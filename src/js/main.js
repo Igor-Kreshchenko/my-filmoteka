@@ -1,15 +1,21 @@
 import refs from './refs';
-// import MoviesApiService from './js/moviesApiService';
+import MoviesApiService from './moviesApiService';
 
 refs.searchFormRef.addEventListener('submit', onSearch);
+refs.loadMoreBtnRef.addEventListener('click', onLoadMore);
 
-const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '4ee9f3c9031692c2042b06be7b52de80';
-
-fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=1`)
-  .then(response => response.json)
-  .then(console.log);
+const moviesApiService = new MoviesApiService();
 
 function onSearch(event) {
   event.preventDefault();
+
+  // query - это атрибут name у инпута(таким образом получаем ссылку на инпут внутри формы)
+  moviesApiService.query = event.currentTarget.elements.query.value;
+
+  moviesApiService.resetPage();
+  moviesApiService.fetchSearchMovies();
+}
+
+function onLoadMore() {
+  moviesApiService.fetchSearchMovies();
 }
