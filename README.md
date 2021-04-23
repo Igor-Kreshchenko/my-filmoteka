@@ -1,1 +1,1 @@
-# my-filmoteka
+my webpack starter kit
