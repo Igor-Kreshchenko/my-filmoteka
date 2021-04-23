@@ -1,4 +1,3 @@
-import { preventExtensions } from 'core-js/core/object';
 import refs from './refs';
 // import MoviesApiService from './js/moviesApiService';
 
