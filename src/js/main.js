@@ -32,6 +32,9 @@ function onLoadMore() {
 
 function appendMoviesMarkup(movies) {
   refs.moviesRef.insertAdjacentHTML('beforeend', moviesTpl(movies));
+
+  // Показывает ко-во страниц с фильмами
+  console.log(moviesApiService.numberOfPages);
 }
 
 function clearMoviesContainer() {
