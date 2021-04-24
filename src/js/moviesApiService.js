@@ -7,9 +7,27 @@ export default class MoviesApiService {
     this.page = 1;
   }
 
+  // Фильмы при загрузке страницы
+  fetchTrendingMovies() {
+    return fetch(
+      `${BASE_URL}/trending/all/week?api_key=${API_KEY}&page=${this.page}&include_adult=false`,
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then(({ results }) => {
+        this.incrementPage();
+
+        return results;
+      });
+  }
+
   // фильмы из строки поиска
   fetchSearchMovies() {
-    fetch(
+    return fetch(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&include_adult=false`,
     )
       .then(response => {
@@ -18,14 +36,25 @@ export default class MoviesApiService {
         }
         return response.json();
       })
-      .then(data => {
-        console.log(data);
+      .then(({ results, total_pages }) => {
         this.incrementPage();
+        // Количество страниц
+        console.log(total_pages);
+
+        return results;
       });
   }
 
   incrementPage() {
     this.page += 1;
+  }
+
+  decrementPage() {
+    if (this.page <= 0) {
+      return;
+    }
+
+    this.page -= 1;
   }
 
   resetPage() {
