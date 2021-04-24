@@ -76,6 +76,7 @@ export default class MoviesApiService {
     this.searchQuery = newQuery;
   }
 
+  // узнать кол-во всех страниц
   get numberOfPages() {
     return this.totalPages;
   }
