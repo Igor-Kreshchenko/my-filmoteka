@@ -54,7 +54,6 @@ function onOpenModal(e) {
 
 function onCloseModal() {
   document.body.classList.remove('show-modal');
-  refs.closeBtnRef.removeEventListener('click', onCloseModal);
 
   // очистка бэкдропа при закрытии, чтобы старая картинка не промелькивала
   refs.backdropRef.innerHTML = '';
