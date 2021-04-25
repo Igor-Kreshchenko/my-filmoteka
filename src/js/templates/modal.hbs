@@ -1,0 +1,29 @@
+<div class="movie-card">
+
+    <img src="https://image.tmdb.org/t/p/w400{{poster_path}}" alt="Movie Poster" class="movie-card__poster" />
+
+    <div class="wrapper">
+        <h2 class="movie-card__title">{{title}}</h2>
+        <ul class="movie-card__info">
+            <li class="movie-card__info--item">
+                <h3 class="movie-card__info--title">Vote / Votes</h3>
+                <p class="movie-card__content--item"><span class="movie-card__vote">{{vote_average}}</span> /
+                    {{vote_count}}</p>
+            </li>
+            <li class="movie-card__info--item">
+                <h3 class="movie-card__info--title">Popularity</h3>
+                <p class="movie-card__content--item">{{popularity}}</p>
+            </li>
+            <li class="movie-card__info--item">
+                <h3 class="movie-card__info--title">Original Title</h3>
+                <p class="movie-card__content--item">{{original_title}}</p>
+            </li>
+            <li class="movie-card__info--item">
+                <h3 class="movie-card__info--title">Genre</h3>
+                <p class="movie-card__content--item">{{genres}}</p>
+        </ul>
+
+        <h3 class="movie-card__about">About</h3>
+        <div class="movie-card__about--content">{{overview}}</div>
+    </div>
+</div>
