@@ -56,7 +56,7 @@ function onCloseModal() {
   document.body.classList.remove('show-modal');
 
   // очистка бэкдропа при закрытии, чтобы старая картинка не промелькивала
-  refs.backdropRef.innerHTML = '';
+  refs.modalRef.innerHTML = '';
 }
 
 function movieCardMarkup(id) {
