@@ -6,4 +6,5 @@ export default {
   loadMoreBtnRef: document.querySelector('[data-action="load-more"]'),
   modalRef: document.querySelector('.modal-wrapper'),
   closeBtnRef: document.querySelector('.modal-close-btn'),
+  paginationList: document.querySelector('.pagination'),
 };

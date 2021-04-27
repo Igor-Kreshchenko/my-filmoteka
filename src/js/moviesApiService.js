@@ -18,7 +18,8 @@ export default class MoviesApiService {
         return response.json();
       })
       .then(({ results, total_pages }) => {
-        this.incrementPage();
+        // Раскомментировать для кнопки load-more 
+        // this.incrementPage();
         this.totalPages = total_pages;
 
         return results;
@@ -27,14 +28,18 @@ export default class MoviesApiService {
   }
 
   // Фильмы при загрузке страницы
-  fetchTrendingMovies() {
+  fetchTrendingMovies(paginPage = 1) {
+    this.page = paginPage;
+
     return this.fetchMovies(
       `${BASE_URL}/trending/all/week?api_key=${API_KEY}&page=${this.page}`,
     );
   }
 
   // фильмы из строки поиска
-  fetchSearchMovies() {
+  fetchSearchMovies(paginPage = 1) {
+    this.page = paginPage;
+
     return this.fetchMovies(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&include_adult=false`,
     );

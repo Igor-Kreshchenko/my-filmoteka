@@ -12,7 +12,7 @@ const moviesApiService = new MoviesApiService();
 // При загрузке страницы
 onLoadPage();
 function onLoadPage() {
-  moviesApiService.fetchTrendingMovies().then(appendMoviesMarkup);
+  moviesApiService.fetchTrendingMovies().then(renewMoviesMarkup);
 }
 // ---
 
@@ -24,16 +24,16 @@ function onSearch(event) {
   moviesApiService.resetPage();
   moviesApiService.fetchSearchMovies().then(movies => {
     clearMoviesContainer();
-    appendMoviesMarkup(movies);
+    renewMoviesMarkup(movies);
   });
 }
 
 function onLoadMore() {
-  moviesApiService.fetchSearchMovies().then(appendMoviesMarkup);
+  moviesApiService.fetchSearchMovies().then(renewMoviesMarkup);
 }
 
-function appendMoviesMarkup(movies) {
-  refs.moviesRef.insertAdjacentHTML('beforeend', moviesTpl(movies));
+function renewMoviesMarkup(movies) {
+  refs.moviesRef.innerHTML =  moviesTpl(movies);
 
   // Показывает ко-во страниц с фильмами
   console.log(moviesApiService.numberOfPages);
@@ -66,4 +66,16 @@ function movieCardMarkup(id) {
     .then(r => {
       refs.modalRef.innerHTML = r;
     });
+}
+
+// пагинация
+refs.paginationList.addEventListener('click', onPageClick)
+
+function onPageClick(e){
+    if(e.target.nodeName !== 'BUTTON'){
+        return;
+    }
+
+    const currentPageNum = e.target.dataset.index;
+    moviesApiService.fetchTrendingMovies(currentPageNum).then(renewMoviesMarkup)
 }
