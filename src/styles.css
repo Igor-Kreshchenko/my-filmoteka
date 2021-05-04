@@ -50,6 +50,11 @@ body.show-modal .backdrop {
   width: 300px;
   margin-right: 30px;
   list-style: none;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.movies__list-item:hover{
+  transform: scale(1.03);
 }
 
 .backdrop {
